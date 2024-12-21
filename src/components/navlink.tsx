@@ -1,20 +1,35 @@
 "use client";
 
 import Link from "next/link";
-import DefaultIcon from "../../public/dashboard.svg";
-import { useEffect, useState } from "react";
+import DashboardIcon from "../../public/dashboard.svg";
+import AccountsIcon from "../../public/accounts.svg";
+import CreditCardsIcon from "../../public/credit-cards.svg";
+import InvestmentsIcon from "../../public/investments.svg";
+import LoansIcon from "../../public/loans.svg";
+import PrivelegesIcon from "../../public/priveleges.svg";
+import ServicesIcon from "../../public/services.svg";
+import SettingsIcon from "../../public/setting.svg";
+import TransactionsIcon from "../../public/transactions.svg";
+import React from "react";
 
-export default function NavLink({ url, displayName, isActive }: NavLinkProps) {
-  const [Icon, setIcon] = useState<React.FC | any>(null);
+const icons = [
+  DashboardIcon,
+  AccountsIcon,
+  CreditCardsIcon,
+  InvestmentsIcon,
+  LoansIcon,
+  PrivelegesIcon,
+  ServicesIcon,
+  SettingsIcon,
+  TransactionsIcon,
+];
 
-  const iconName = url.split("/")[1];
-
-  useEffect(() => {
-    import(`../../public/${iconName}.svg`)
-      .then((module) => setIcon(() => module.default as React.FC))
-      .catch((err) => console.error("Error loading icon:", err));
-  }, [iconName]);
-
+export default function NavLink({
+  url,
+  displayName,
+  isActive,
+  iconIndex,
+}: NavLinkProps) {
   return (
     <Link href={url} className="flex flex-row gap-2 items-center gap-9">
       <div
@@ -23,23 +38,11 @@ export default function NavLink({ url, displayName, isActive }: NavLinkProps) {
         } w-1.5 h-[60] rounded-e-lg`}
       ></div>
 
-      {Icon ? (
-        <Icon
-          style={{
-            color: isActive ? "rgb(45, 96, 255)" : "rgb(177, 177, 177)",
-            width: "18px",
-            height: "18px",
-          }}
-        />
-      ) : (
-        <DefaultIcon
-          style={{
-            color: "transparent",
-            width: "18px",
-            height: "18px",
-          }}
-        />
-      )}
+      {React.createElement(icons[iconIndex], {
+        color: isActive ? "rgb(45, 96, 255)" : "rgb(177, 177, 177)",
+        width: "18px",
+        height: "18px",
+      })}
 
       <div
         className={`flex items-center text-lg ${
