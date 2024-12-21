@@ -7,13 +7,17 @@
   --foreground: #171717;
   --navigation-active-foreground: rgb(45, 96, 255);
   --navigation-inactive-foreground: rgb(177, 177, 177);
+  --primary2: #343c6a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* --background: #0a0a0a;
+    --foreground: #ededed; */
+    --background: #ffffff;
+    --foreground: #171717;
     --navigation-active-foreground: rgb(45, 96, 255);
+    --primary2: #343c6a;
     --navigation-inactive-foreground: rgb(177, 177, 177);
   }
 }

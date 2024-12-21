@@ -13,6 +13,7 @@ export default {
         foreground: "var(--foreground)",
         navigationActiveForeground: "var(--navigation-active-foreground)",
         navigationInActiveForeground: "var(--navigation-inactive-foreground)",
+        primary2: "var(--primary2)",
       },
     },
   },

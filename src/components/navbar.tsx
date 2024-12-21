@@ -1,20 +1,30 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import Logo from "../../public/logo.png";
 import NavLink from "./navlink";
+import Image from "next/image";
 
 export default function NavBar() {
   const pathname = usePathname();
 
   return (
     <nav>
+      <header className="flex flex-row px-10 py-5">
+        <div className="flex flex-row gap-2">
+          <Image src={Logo} alt="Logo" />
+
+          <span className="text-primary2 text-2xl font-black">BankDash.</span>
+        </div>
+      </header>
+
       <ul>
         <li>
           <NavLink
             iconIndex={0}
-            url="/dashboard"
+            url="/"
             displayName="Dashboard"
-            isActive={pathname === "/dashboard"}
+            isActive={pathname === "/"}
           ></NavLink>
         </li>
 
