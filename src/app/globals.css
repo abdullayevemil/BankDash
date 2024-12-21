@@ -5,12 +5,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --navigation-active-foreground: rgb(45, 96, 255);
+  --navigation-inactive-foreground: rgb(177, 177, 177);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --navigation-active-foreground: rgb(45, 96, 255);
+    --navigation-inactive-foreground: rgb(177, 177, 177);
   }
 }
 
