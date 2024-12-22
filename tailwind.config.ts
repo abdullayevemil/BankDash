@@ -14,6 +14,14 @@ export default {
         navigationActiveForeground: "var(--navigation-active-foreground)",
         navigationInActiveForeground: "var(--navigation-inactive-foreground)",
         primary2: "var(--primary2)",
+        border: "var(--border)",
+        backgroundPrimary: "var(--background-primary)",
+        placeholder: "var(--placeholder-foreground)",
+        primaryText: "var(--primary-text)"
+      },
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+        montserrat: ['var(--font-montserrat)'],
       },
     },
   },

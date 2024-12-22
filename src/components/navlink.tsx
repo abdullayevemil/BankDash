@@ -45,7 +45,7 @@ export default function NavLink({
       })}
 
       <div
-        className={`flex items-center text-lg ${
+        className={`flex items-center text-lg font-inter ${
           isActive
             ? "text-navigationActiveForeground"
             : "text-navigationInActiveForeground"

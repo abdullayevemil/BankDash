@@ -1,22 +1,24 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Logo from "../../public/logo.png";
 import NavLink from "./navlink";
+import Logo from "../../public/logo.png";
 import Image from "next/image";
 
 export default function NavBar() {
   const pathname = usePathname();
 
   return (
-    <nav>
-      <header className="flex flex-row px-10 py-5">
-        <div className="flex flex-row gap-2">
+    <nav className="h-screen border-solid border-border border-r">
+      <div className="flex flex-row px-10 py-5">
+        <div className="flex flex-row gap-2 py-3">
           <Image src={Logo} alt="Logo" />
 
-          <span className="text-primary2 text-2xl font-black">BankDash.</span>
+          <span className="text-primary2 text-2xl font-black font-montserrat">
+            BankDash.
+          </span>
         </div>
-      </header>
+      </div>
 
       <ul>
         <li>

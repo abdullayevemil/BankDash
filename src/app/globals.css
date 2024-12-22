@@ -8,6 +8,10 @@
   --navigation-active-foreground: rgb(45, 96, 255);
   --navigation-inactive-foreground: rgb(177, 177, 177);
   --primary2: #343c6a;
+  --border: #e6eff5;
+  --background-primary: #f5f7fa;
+  --placeholder-foreground: #8ba3cb;
+  --primary-text: #718EBF;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,6 +23,10 @@
     --navigation-active-foreground: rgb(45, 96, 255);
     --primary2: #343c6a;
     --navigation-inactive-foreground: rgb(177, 177, 177);
+    --border: #e6eff5;
+    --background-primary: #f5f7fa;
+    --placeholder-foreground: #8ba3cb;
+    --primary-text: #718EBF;
   }
 }
 
@@ -26,4 +34,8 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+*:focus {
+  outline: none;
 }
