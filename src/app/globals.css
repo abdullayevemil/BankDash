@@ -3,39 +3,122 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
   --navigation-active-foreground: rgb(45, 96, 255);
   --navigation-inactive-foreground: rgb(177, 177, 177);
   --primary2: #343c6a;
-  --border: #e6eff5;
+  --border-primary: #e6eff5;
   --background-primary: #f5f7fa;
   --placeholder-foreground: #8ba3cb;
-  --primary-text: #718EBF;
+  --primary-text: #718ebf;
+  --semi-transparent: rgba(255, 255, 255, 0.5);
+  --dark-semi-transparent: rgba(145, 153, 175, 0.5);
+  --card-secondary-foreground: rgba(255, 255, 255, 0.7);
+  --white-card-secondary-foreground: rgba(113, 142, 191, 1);
+  --contact-name: #232323;
+  --transaction-bar-color: #edf1f7;
+  --send-button: #1814f3;
+  --negative-price-color: #ff4b4a;
+  --positive-price-color: #41d4a8;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* --background: #0a0a0a;
-    --foreground: #ededed; */
-    --background: #ffffff;
-    --foreground: #171717;
     --navigation-active-foreground: rgb(45, 96, 255);
     --primary2: #343c6a;
     --navigation-inactive-foreground: rgb(177, 177, 177);
-    --border: #e6eff5;
+    --border-primary: #e6eff5;
     --background-primary: #f5f7fa;
     --placeholder-foreground: #8ba3cb;
-    --primary-text: #718EBF;
+    --primary-text: #718ebf;
+    --semi-transparent: rgba(255, 255, 255, 0.5);
+    --dark-semi-transparent: rgba(145, 153, 175, 0.5);
+    --card-secondary-foreground: rgba(255, 255, 255, 0.7);
+    --white-card-secondary-foreground: rgba(113, 142, 191, 1);
+    --contact-name: #232323;
+    --transaction-bar-color: #edf1f7;
+    --send-button: #1814f3;
+    --negative-price-color: #ff4b4a;
+    --positive-price-color: #41d4a8;
   }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 *:focus {
   outline: none;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 220.9 39.3% 11%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71.4% 4.1%;
+    --chart-1: rgba(24, 20, 243, 1);
+    --chart-2: rgba(22, 219, 204, 1);
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --pie-chart-1: rgba(52, 60, 106, 1);
+    --pie-chart-2: rgba(252, 121, 0, 1);
+    --pie-chart-3: rgba(24, 20, 243, 1);
+    --pie-chart-4: rgba(250, 0, 255, 1);
+  }
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 210 20% 98%;
+    --primary-foreground: 220.9 39.3% 11%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 12.2% 83.9%;
+    --chart-1: rgba(24, 20, 243, 1);
+    --chart-2: rgba(22, 219, 204, 1);
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --pie-chart-1: rgba(52, 60, 106, 1);
+    --pie-chart-2: rgba(252, 121, 0, 1);
+    --pie-chart-3: rgba(24, 20, 243, 1);
+    --pie-chart-4: rgba(250, 0, 255, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }

@@ -1,12 +1,12 @@
 import Image from "next/image";
-import User from '../../public/header/user.png';
-import SearchIcon from '../../public/header/search.svg';
-import SettingsIcon from '../../public/header/settings.svg';
-import NotificationsIcon from '../../public/header/notifications.svg';
+import User from '../assets/header/user.png';
+import SearchIcon from '../assets/header/search.svg';
+import SettingsIcon from '../assets/header/settings.svg';
+import NotificationsIcon from '../assets/header/notifications.svg';
 
 export default function Header() {
   return (
-    <header className="flex flex-row justify-between w-full py-5 px-10 items-center border-b">
+    <header className="flex flex-row justify-between w-full py-5 px-10 items-center border-b border-borderPrimary">
       <div className="font-inter font-semibold text-[28px] text-primary2">Overview</div>
 
       <div className="flex flex-row gap-[30] items-center">

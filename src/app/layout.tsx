@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/navbar";
-import { Inter, Montserrat } from "next/font/google";
+import { Inter, Montserrat, Lato } from "next/font/google";
 import Header from "@/components/header";
+import StyledComponentsRegistry from "@/lib/registry";
+import { Bounce, ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +32,12 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
 });
 
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "700", "900"],
+  variable: "--font-lato",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,17 +46,33 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${montserrat.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${montserrat.variable} ${lato.variable} antialiased`}
       >
-        <div className="flex flex-row">
-          <NavBar></NavBar>
+        <StyledComponentsRegistry>
+          <div className="flex flex-row">
+            <NavBar></NavBar>
 
-          <div className="flex-1">
-            <Header />
+            <div className="flex-1">
+              <Header />
 
-            {children}
+              {children}
+            </div>
           </div>
-        </div>
+        </StyledComponentsRegistry>
+
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick={true}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Bounce}
+        />
       </body>
     </html>
   );

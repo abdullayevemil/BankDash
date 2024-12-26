@@ -1,15 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import DashboardIcon from "../../public/dashboard.svg";
-import AccountsIcon from "../../public/accounts.svg";
-import CreditCardsIcon from "../../public/credit-cards.svg";
-import InvestmentsIcon from "../../public/investments.svg";
-import LoansIcon from "../../public/loans.svg";
-import PrivelegesIcon from "../../public/priveleges.svg";
-import ServicesIcon from "../../public/services.svg";
-import SettingsIcon from "../../public/setting.svg";
-import TransactionsIcon from "../../public/transactions.svg";
+import DashboardIcon from "../assets/navigation/dashboard.svg";
+import AccountsIcon from "../assets/navigation/accounts.svg";
+import CreditCardsIcon from "../assets/navigation/credit-cards.svg";
+import InvestmentsIcon from "../assets/navigation/investments.svg";
+import LoansIcon from "../assets/navigation/loans.svg";
+import PrivelegesIcon from "../assets/navigation/priveleges.svg";
+import ServicesIcon from "../assets/navigation/services.svg";
+import SettingsIcon from "../assets/navigation/setting.svg";
+import TransactionsIcon from "../assets/navigation/transactions.svg";
 import React from "react";
 
 const icons = [
@@ -23,6 +23,13 @@ const icons = [
   SettingsIcon,
   TransactionsIcon,
 ];
+
+interface NavLinkProps {
+  url: string;
+  displayName: string;
+  isActive: boolean;
+  iconIndex: number;
+};
 
 export default function NavLink({
   url,

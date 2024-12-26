@@ -2,14 +2,14 @@
 
 import { usePathname } from "next/navigation";
 import NavLink from "./navlink";
-import Logo from "../../public/logo.png";
+import Logo from "../assets/navigation/logo.png";
 import Image from "next/image";
 
 export default function NavBar() {
   const pathname = usePathname();
 
   return (
-    <nav className="h-screen border-solid border-border border-r">
+    <nav className="h-screen border-solid border-borderPrimary border-r">
       <div className="flex flex-row px-10 py-5">
         <div className="flex flex-row gap-2 py-3">
           <Image src={Logo} alt="Logo" />
@@ -24,9 +24,9 @@ export default function NavBar() {
         <li>
           <NavLink
             iconIndex={0}
-            url="/"
+            url="/dashboard"
             displayName="Dashboard"
-            isActive={pathname === "/"}
+            isActive={pathname === "/dashboard"}
           ></NavLink>
         </li>
 
