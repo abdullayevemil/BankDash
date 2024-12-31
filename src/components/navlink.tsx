@@ -14,14 +14,14 @@ import React from "react";
 
 const icons = [
   DashboardIcon,
-  AccountsIcon,
-  CreditCardsIcon,
-  InvestmentsIcon,
-  LoansIcon,
-  PrivelegesIcon,
-  ServicesIcon,
-  SettingsIcon,
   TransactionsIcon,
+  AccountsIcon,
+  InvestmentsIcon,
+  CreditCardsIcon,
+  LoansIcon,
+  ServicesIcon,
+  PrivelegesIcon,
+  SettingsIcon,
 ];
 
 interface NavLinkProps {

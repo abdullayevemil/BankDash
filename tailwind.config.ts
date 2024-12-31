@@ -33,6 +33,8 @@ export default {
         sendButton: "var(--send-button)",
         negativePrice: "var(--negative-price-color)",
         positivePrice: "var(--positive-price-color)",
+        buttonPrimaryText: "var(--button-primary-foreground)",
+        buttonHoverText: "var(--button-hover-foreground)",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
