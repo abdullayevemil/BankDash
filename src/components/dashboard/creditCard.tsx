@@ -24,7 +24,7 @@ export default function CreditCard({
   return (
     <Card
       theme={theme}
-      className={`shadow font-lato flex flex-col rounded-3xl ${theme === 'whiteCard' ? 'border border-border ' : ' '}` + className}
+      className={`shadow font-lato flex flex-col rounded-3xl ${theme === 'whiteCard' ? 'border border-border text-black ' : ' text-white '}` + className}
     >
       <div className="p-6 flex flex-col gap-[34]">
         <div className="flex flex-row justify-between">

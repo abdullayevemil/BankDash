@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { BarChart, Bar, Cell, XAxis, ResponsiveContainer, LabelList } from "recharts";
 import { Card, CardContent } from "@/components/ui/card";
+import { BarChartData } from "@/types/barChartData";
 
 const chartData = [
   { name: "January", desktop: 186 },
@@ -16,7 +17,7 @@ const chartData = [
 export function ExpenseBarChart() {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleClick = (data: any, index: number) => {
+  const handleClick = (data: BarChartData, index: number) => {
     setActiveIndex(index);
   };
 
@@ -43,8 +44,8 @@ export function ExpenseBarChart() {
                 content={({ x, y, value, index }) =>
                   index === activeIndex ? (
                     <text
-                      x={x + 22}
-                      y={y - 7}
+                      x={x ?? + 22}
+                      y={y ?? - 7}
                       textAnchor="middle"
                       className="font-bold text-sm fill-current font-inter font-medium bg-red"
                     >

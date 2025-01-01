@@ -1,4 +1,5 @@
 import { TransactionInfo } from "@/types/transactionInfo";
+import Image from "next/image";
 import styled from "styled-components";
 
 export default function TransactionInformation({
@@ -15,7 +16,7 @@ export default function TransactionInformation({
           iconbackground={iconbackground}
           className="rounded-full flex justify-center items-center p-4"
         >
-          <img width={22} height={22} src={iconUrl} alt="transaction icon" />
+          <Image width={22} height={22} src={iconUrl} alt="transaction icon" />
         </Container>
 
         <div>

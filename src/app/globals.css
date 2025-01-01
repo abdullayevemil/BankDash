@@ -77,8 +77,8 @@ body {
     --ring: 224 71.4% 4.1%;
     --chart-1: rgba(24, 20, 243, 1);
     --chart-2: rgba(22, 219, 204, 1);
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
+    --chart-3: #1A16F3;
+    --chart-4: #FCAA0B;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
     --pie-chart-1: rgba(52, 60, 106, 1);
@@ -108,8 +108,8 @@ body {
     --ring: 216 12.2% 83.9%;
     --chart-1: rgba(24, 20, 243, 1);
     --chart-2: rgba(22, 219, 204, 1);
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
+    --chart-3: #1A16F3;
+    --chart-4: #FCAA0B;
     --chart-5: 340 75% 55%;
     --pie-chart-1: rgba(52, 60, 106, 1);
     --pie-chart-2: rgba(252, 121, 0, 1);
