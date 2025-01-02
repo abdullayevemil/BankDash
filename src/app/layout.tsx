@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/components/navbar";
 import { Inter, Montserrat, Lato } from "next/font/google";
-import Header from "@/components/header";
 import StyledComponentsRegistry from "@/lib/registry";
 import { Bounce, ToastContainer } from "react-toastify";
+import Content from "@/components/content";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,15 +48,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${montserrat.variable} ${lato.variable} antialiased`}
       >
         <StyledComponentsRegistry>
-          <div className="flex flex-row">
-            <NavBar></NavBar>
-
-            <div className="flex-1">
-              <Header />
-
+            <Content>
               {children}
-            </div>
-          </div>
+            </Content>
         </StyledComponentsRegistry>
 
         <ToastContainer

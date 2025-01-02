@@ -4,9 +4,17 @@ import { usePathname } from "next/navigation";
 import NavLink from "./navlink";
 import Logo from "../assets/navigation/logo.png";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 export default function NavBar() {
+  const { data: session, status } = useSession();
+
   const pathname = usePathname();
+
+  if(status != 'authenticated')
+  {
+    return null;
+  }
 
   return (
     <nav className="h-screen border-solid border-borderPrimary border-r">
