@@ -17,9 +17,15 @@ import { Button } from "../ui/button";
 import { z } from "zod";
 import { useFormStatus } from "react-dom";
 import { useState } from "react";
+import axios, { AxiosError } from "axios";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const RegisterForm = () => {
   const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+
   const form = useForm({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
@@ -30,12 +36,26 @@ const RegisterForm = () => {
     },
   });
 
-  const onSubmit = (data: z.infer<typeof RegisterSchema>) => {
+  const onSubmit = async (data: z.infer<typeof RegisterSchema>) => {
     setLoading(true);
-    console.log(data);
+
+    try {
+      const response = await axios.post("/api/users", data);
+
+      toast.success("Registered successfully!");
+
+      router.push("/authentication/signin");
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        toast.error(error?.response?.data.error);
+      }
+    }
+
+    setLoading(false);
   };
 
   const { pending } = useFormStatus();
+
   return (
     <CardWrapper
       label="Create an account"
@@ -52,6 +72,7 @@ const RegisterForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Email</FormLabel>
+
                   <FormControl>
                     <Input
                       {...field}
@@ -59,50 +80,61 @@ const RegisterForm = () => {
                       placeholder="johndoe@gmail.com"
                     />
                   </FormControl>
+
                   <FormMessage />
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Name</FormLabel>
+
                   <FormControl>
                     <Input {...field} placeholder="John Doe" />
                   </FormControl>
+
                   <FormMessage />
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
               name="password"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Password</FormLabel>
+
                   <FormControl>
                     <Input {...field} type="password" placeholder="******" />
                   </FormControl>
+
                   <FormMessage />
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Confirm Password</FormLabel>
+
                   <FormControl>
                     <Input {...field} type="password" placeholder="******" />
                   </FormControl>
+
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
+
           <Button type="submit" className="w-full" disabled={pending}>
             {loading ? "Loading..." : "Register"}
           </Button>

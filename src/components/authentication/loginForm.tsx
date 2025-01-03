@@ -22,6 +22,7 @@ import GoogleIcon from "@/assets/authentication/google.svg";
 import { getSession, signIn } from "next-auth/react";
 import { useGlobalContext } from "../../../context/UserContext";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
@@ -49,13 +50,19 @@ const LoginForm = () => {
 
     const updatedSession = await getSession();
 
-    if (updatedSession?.user) {
-      setUser(updatedSession?.user);
-    }
-
     setLoading(false);
 
-    router.push("/dashboard");
+    if (updatedSession?.user) {
+      setUser(updatedSession?.user);
+
+      toast.success("Signed In successfully!");
+
+      router.push("/dashboard");
+
+      return;
+    }
+
+    toast.error("Invalid credentials entered!");
   };
 
   const onOAuthSignIn = (provider: string) => {
@@ -93,7 +100,9 @@ const LoginForm = () => {
 
       <div className="flex items-center justify-center gap-2 m-4">
         <hr className="flex-grow border-t border-gray-300" />
+
         <span className="text-gray-500">OR</span>
+
         <hr className="flex-grow border-t border-gray-300" />
       </div>
 
@@ -106,6 +115,7 @@ const LoginForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Email</FormLabel>
+
                   <FormControl>
                     <Input
                       {...field}
@@ -113,24 +123,29 @@ const LoginForm = () => {
                       placeholder="johndoe@gmail.com"
                     />
                   </FormControl>
+
                   <FormMessage />
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
               name="password"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Password</FormLabel>
+
                   <FormControl>
                     <Input {...field} type="password" placeholder="******" />
                   </FormControl>
+
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
+
           <Button type="submit" className="w-full" disabled={pending}>
             {loading ? "Loading..." : "Login"}
           </Button>

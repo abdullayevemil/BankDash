@@ -17,10 +17,16 @@ export default function CreditCards() {
       try {
         const session = await getSession();
 
-        setUser(session?.user ?? null);
+        const userResponse = await axios.get(
+          `/api/users?email=${session?.user.email}`
+        );
+
+        const currentUser = userResponse.data[0];
+
+        setUser(currentUser ?? null);
 
         const response = await axios.get(
-          `/api/creditCards?limit=2&userId=${user?.id}`
+          `/api/creditCards?limit=2&userId=${currentUser?.id}`
         );
 
         if (response.status != 200) {
@@ -29,7 +35,7 @@ export default function CreditCards() {
 
         setCreditCards(response.data);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     };
 
