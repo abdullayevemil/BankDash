@@ -1,9 +1,31 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions, Session } from "next-auth";
+import { JWT } from "next-auth/jwt";
 import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
+import axios from "axios";
 
-const authOptions = {
+declare module "next-auth/jwt" {
+  interface JWT {
+    id: string;
+    name?: string | null;
+    email?: string | null;
+    image?: string;
+  }
+}
+
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: string;
+      name?: string | null;
+      email?: string | null;
+      image?: string;
+    };
+  }
+}
+
+const authOptions: NextAuthOptions = {
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID || "",
@@ -21,15 +43,46 @@ const authOptions = {
       },
       async authorize(credentials) {
         const { email, password } = credentials || {};
+        const response = await axios.get(
+          `http://localhost:3000/api/users?email=${email}`
+        );
 
-        if (email === "user@example.com" && password === "password123") {
-          return { id: "1", name: "User", email: "user@example.com" };
+        const user = response.data[0];
+
+        if (user?.password === password) {
+          return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+          };
         }
 
         return null;
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }): Promise<JWT> {
+      if (user) {
+        token.id = user.id;
+        token.name = user.name;
+        token.email = user.email;
+        token.image = user.image || "";
+      }
+      return token;
+    },
+    async session({ session, token }): Promise<Session> {
+      if (token) {
+        session.user = {
+          id: token.id,
+          name: token.name!,
+          email: token.email!,
+          image: token.image,
+        };
+      }
+      return session;
+    },
+  },
   pages: {
     signIn: "/",
   },

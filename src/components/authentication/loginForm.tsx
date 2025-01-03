@@ -19,10 +19,16 @@ import { useFormStatus } from "react-dom";
 import { useState } from "react";
 import GithubIcon from "@/assets/authentication/github-mark.svg";
 import GoogleIcon from "@/assets/authentication/google.svg";
-import { signIn } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
+import { useGlobalContext } from "../../../context/UserContext";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+
+  const { setUser } = useGlobalContext();
 
   const form = useForm({
     resolver: zodResolver(LoginSchema),
@@ -34,19 +40,26 @@ const LoginForm = () => {
 
   const onSubmit = async (data: z.infer<typeof LoginSchema>) => {
     setLoading(true);
-    
+
     await signIn("credentials", {
-      redirect: true,
+      redirect: false,
       email: data.email,
       password: data.password,
-      callbackUrl: '/dashboard',
     });
-    
+
+    const updatedSession = await getSession();
+
+    if (updatedSession?.user) {
+      setUser(updatedSession?.user);
+    }
+
     setLoading(false);
+
+    router.push("/dashboard");
   };
 
   const onOAuthSignIn = (provider: string) => {
-    signIn(provider, { redirect: true, callbackUrl: '/dashboard', });
+    signIn(provider, { redirect: true, callbackUrl: "/dashboard" });
   };
 
   const { pending } = useFormStatus();
@@ -59,13 +72,19 @@ const LoginForm = () => {
       backButtonLabel="Don't have an account? Register here."
     >
       <div className="flex flex-row justify-center items-center gap-2 w-full mb-2">
-        <Button onClick={() => onOAuthSignIn("github")}  className="flex flex-row gap-2 justify-center items-center w-1/2">
+        <Button
+          onClick={() => onOAuthSignIn("github")}
+          className="flex flex-row gap-2 justify-center items-center w-1/2"
+        >
           <GithubIcon width={30} height={30} />
 
           <div>GitHub</div>
         </Button>
 
-        <Button onClick={() => onOAuthSignIn("google")} className="flex flex-row gap-2 justify-center items-center w-1/2">
+        <Button
+          onClick={() => onOAuthSignIn("google")}
+          className="flex flex-row gap-2 justify-center items-center w-1/2"
+        >
           <GoogleIcon width={30} height={30} />
 
           <div>Google</div>
