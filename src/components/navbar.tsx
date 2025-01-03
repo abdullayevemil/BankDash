@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 
 export default function NavBar() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
 
   const pathname = usePathname();
 

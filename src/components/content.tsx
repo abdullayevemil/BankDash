@@ -1,26 +1,34 @@
 "use client";
 
-import Header from "./header";
-import NavBar from "./navbar";
-import { SessionProvider } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Content({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
-  return (
-    <SessionProvider>
-      <div className="flex flex-row">
-        <NavBar></NavBar>
+  const { status } = useSession();
 
-        <div className="flex-1">
-          <Header />
+  const router = useRouter();
 
-          {children}
-        </div>
-      </div>
-    </SessionProvider>
-  );
+  const pathname = usePathname();
+
+  useEffect(() => {
+    console.log(status);
+    if (status === "unauthenticated" && pathname != "/authentication/signup") {
+      router.push("/authentication/signin");
+
+      return;
+    }
+
+    if (status === "authenticated" && pathname.includes("authentication")) {
+      router.push("/dashboard");
+
+      return;
+    }
+  });
+
+  return <>{children}</>;
 }

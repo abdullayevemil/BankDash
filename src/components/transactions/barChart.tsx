@@ -44,8 +44,8 @@ export function ExpenseBarChart() {
                 content={({ x, y, value, index }) =>
                   index === activeIndex ? (
                     <text
-                      x={x ?? + 22}
-                      y={y ?? - 7}
+                      x={(x as number || 0) + 22}
+                      y={(y as number || 0) - 7}
                       textAnchor="middle"
                       className="font-bold text-sm fill-current font-inter font-medium bg-red"
                     >

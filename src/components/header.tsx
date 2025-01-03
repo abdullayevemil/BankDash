@@ -5,10 +5,10 @@ import User from "../assets/header/user.png";
 import SearchIcon from "../assets/header/search.svg";
 import SettingsIcon from "../assets/header/settings.svg";
 import NotificationsIcon from "../assets/header/notifications.svg";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 export default function Header() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
 
   if (status != "authenticated") {
     return null;
@@ -26,7 +26,7 @@ export default function Header() {
 
           <input
             className="font-inter items-center bg-backgroundPrimary placeholder-placeholder text-primaryText"
-            placeholder="Search for somehting"
+            placeholder="Search for something"
           />
         </div>
 
@@ -39,6 +39,13 @@ export default function Header() {
         </button>
 
         <Image src={User} alt="user image" />
+
+        <button
+          onClick={() => signOut({ callbackUrl: "/" })}
+          className="p-3 bg-backgroundPrimary rounded-full flex items-center justify-center"
+        >
+          <span className="text-primaryText">Sign Out</span>
+        </button>
       </div>
     </header>
   );
