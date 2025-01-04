@@ -1,5 +1,5 @@
 import { cards } from "@/data/creditCards";
-import { type NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -18,5 +18,5 @@ export async function GET(request: NextRequest) {
     creditCards = creditCards.slice(0, Number(limit));
   }
 
-  return Response.json(creditCards);
+  return NextResponse.json(creditCards);
 }

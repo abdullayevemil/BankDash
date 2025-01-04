@@ -15,7 +15,7 @@ export default function TransactionsRootLayout({
 }: Props) {
   return (
     <main className="flex flex-col px-10 pt-6 pb-7 flex-1 bg-backgroundPrimary gap-5">
-      <section className="flex flex-row gap-[30]">
+      <section className="flex flex-row gap-7">
         <div className="flex flex-row w-2/3 justify-between">
           <div className="font-inter text-large font-semibold flex justify-left items-center text-primary2">
             My Cards
@@ -34,7 +34,7 @@ export default function TransactionsRootLayout({
       </section>
 
       <section>
-        <div className="flex flex-row gap-[30]">
+        <div className="flex flex-row gap-7">
           {creditCards}
 
           {barChart}

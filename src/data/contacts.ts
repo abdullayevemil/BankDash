@@ -1,4 +1,6 @@
-export const contacts = [
+import { UserContact } from "@/types/contact";
+
+export const contacts: UserContact[] = [
   {
     id: 1,
     name: "Emily Johnson",

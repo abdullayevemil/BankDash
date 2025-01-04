@@ -16,7 +16,7 @@ export default function Content({
   const pathname = usePathname();
 
   useEffect(() => {
-    if (status !== "authenticated" && pathname != "/authentication/signup") {
+    if (status === "unauthenticated" && pathname != "/authentication/signup") {
       router.push("/authentication/signin");
 
       return;

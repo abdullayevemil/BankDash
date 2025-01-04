@@ -17,11 +17,11 @@ export default function DashboardRootLayout({
     <main className="flex flex-col px-10 pt-6 pb-7 flex-1 bg-backgroundPrimary gap-5">
       <section>{overviewCards}</section>
 
-      <section className="flex flex-row gap-[30]">
+      <section className="flex flex-row gap-7">
         {lastTransactions} {creditCard}
       </section>
 
-      <section className="flex flex-row gap-[30]">{creditOverview} {creditCard}</section>
+      <section className="flex flex-row gap-7">{creditOverview} {creditCard}</section>
 
       {children}
     </main>

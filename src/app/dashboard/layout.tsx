@@ -19,7 +19,7 @@ export default function DashboardRootLayout({
 }: Props) {
   return (
     <main className="flex flex-col px-10 pt-6 pb-7 flex-1 bg-backgroundPrimary gap-5">
-      <section className="flex gap-[30] flex-col md:flex-row">
+      <section className="flex gap-7 flex-col md:flex-row">
         <div className="flex flex-row w-2/3 justify-between">
           <div className="font-inter text-large font-semibold flex justify-left items-center text-primary2">
             My Cards
@@ -38,14 +38,14 @@ export default function DashboardRootLayout({
       </section>
 
       <section>
-        <div className="flex gap-[30] flex-col md:flex-row">
+        <div className="flex gap-7 flex-col md:flex-row">
           {creditCards}
 
           {recentTransactions}
         </div>
       </section>
 
-      <section className="flex flex-col gap-[30] md:flex-row">
+      <section className="flex flex-col gap-7 md:flex-row">
         <div className="flex flex-row w-2/3 justify-between">
           <div className="font-inter text-large font-semibold flex justify-left items-center text-primary2">
             Weekly Activity
@@ -59,13 +59,13 @@ export default function DashboardRootLayout({
         </div>
       </section>
 
-      <section className="flex flex-col gap-[30] md:flex-row">
+      <section className="flex flex-col gap-7 md:flex-row">
         {barChart}
 
         {pieChart}
       </section>
 
-      <section className="flex flex-col gap-[30] md:flex-row">
+      <section className="flex flex-col gap-7 md:flex-row">
         {contacts}
 
         {areaChart}

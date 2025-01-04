@@ -44,7 +44,7 @@ export default function CreditCards() {
 
   return (
     <>
-      <div className="flex flex-row w-2/3 gap-[30]">
+      <div className="flex flex-row w-2/3 gap-7">
         {creditCards.map((card) => (
           <CreditCard
             key={card.id}

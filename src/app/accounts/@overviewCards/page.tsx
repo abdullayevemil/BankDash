@@ -33,7 +33,7 @@ const cards:OverviewCardProps[] = [
 
 export default function OverviewCards() {
     return (
-        <ul className="flex flex-row gap-[30] w-full">
+        <ul className="flex flex-row gap-7 w-full">
             {cards.map((card, index) => <CardItem width={100 / cards.length} key={index}>
                 <OverviewCard name={card.name} amount={card.amount} iconBackground={card.iconBackground} iconUrl={card.iconUrl}></OverviewCard>
             </CardItem>)}

@@ -20,7 +20,7 @@ export default function Header() {
         Overview
       </div>
 
-      <div className="flex flex-row gap-[30] items-center">
+      <div className="flex flex-row gap-7 items-center">
         <div className="items-center flex flex-row bg-backgroundPrimary py-4 px-6 rounded-[40] gap-4">
           <SearchIcon color="#718EBF" width={25} height={25} />
 

@@ -40,7 +40,7 @@ const RegisterForm = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("/api/users", data);
+      await axios.post("/api/users", data);
 
       toast.success("Registered successfully!");
 

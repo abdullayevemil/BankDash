@@ -105,7 +105,7 @@ const transactions: TransactionDetailed[] = [
 
 export default function Transactions() {
   return (
-    <div className="flex flex-col gap-[30]">
+    <div className="flex flex-col gap-7">
       <PhotoInspiredTabs></PhotoInspiredTabs>
       
       <Card className="p-[30] pt-[22]">

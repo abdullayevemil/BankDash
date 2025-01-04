@@ -1,25 +1,10 @@
 "use client";
 
-import {
-  ChartConfig,
-} from "@/components/ui/chart";
+import { ChartConfig } from "@/components/ui/chart";
 import { DashboardPieChart } from "@/components/dashboard/pieChart";
+import { useEffect, useState } from "react";
 import { PieChartData } from "@/types/pieChartData";
-
-const chartData: PieChartData[] = [
-  {
-    category: "entertainment",
-    percentage: 30,
-    fill: "var(--color-entertainment)",
-  },
-  { category: "investments", percentage: 20, fill: "var(--color-investments)" },
-  { category: "others", percentage: 35, fill: "var(--color-others)" },
-  {
-    category: "bill_expense",
-    percentage: 15,
-    fill: "var(--color-bill_expense)",
-  },
-];
+import axios from "axios";
 
 const chartConfig = {
   category: {
@@ -44,7 +29,17 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export default function BalancePieChart() {
-  return (
-    <DashboardPieChart chartConfig={chartConfig} chartData={chartData} />
-  );
+  const [statistics, setStatistics] = useState<PieChartData[]>([]);
+
+  useEffect(() => {
+    const fetchStatistics = async () => {
+      const response = await axios.get("/api/expenseStatistics");
+
+      setStatistics(response.data);
+    };
+
+    fetchStatistics();
+  }, [setStatistics]);
+
+  return <DashboardPieChart chartConfig={chartConfig} chartData={statistics} />;
 }
