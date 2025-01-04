@@ -4,13 +4,13 @@ import CreditCard from "@/components/dashboard/creditCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { type CreditCard as Card } from "@/types/creditCard";
-import { useGlobalContext } from "../../../../context/UserContext";
 import { getSession } from "next-auth/react";
+import { User } from "@/types/user";
 
 export default function CreditCards() {
   const [creditCards, setCreditCards] = useState<Card[]>([]);
 
-  const { user, setUser } = useGlobalContext();
+  const [ user, setUser ] = useState<User>();
 
   useEffect(() => {
     const fetchCreditCards = async () => {

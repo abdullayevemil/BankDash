@@ -20,7 +20,6 @@ import { useState } from "react";
 import GithubIcon from "@/assets/authentication/github-mark.svg";
 import GoogleIcon from "@/assets/authentication/google.svg";
 import { getSession, signIn } from "next-auth/react";
-import { useGlobalContext } from "../../../context/UserContext";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
@@ -28,8 +27,6 @@ const LoginForm = () => {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-
-  const { setUser } = useGlobalContext();
 
   const form = useForm({
     resolver: zodResolver(LoginSchema),
@@ -53,8 +50,6 @@ const LoginForm = () => {
     setLoading(false);
 
     if (updatedSession?.user) {
-      setUser(updatedSession?.user);
-
       toast.success("Signed In successfully!");
 
       router.push("/dashboard");

@@ -5,7 +5,6 @@ import { Inter, Montserrat, Lato } from "next/font/google";
 import StyledComponentsRegistry from "@/lib/registry";
 import { Bounce, ToastContainer } from "react-toastify";
 import ContentProvider from "@/components/contentProvider";
-import { GlobalProvider } from "../../context/UserContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,9 +48,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${montserrat.variable} ${lato.variable} antialiased`}
       >
         <StyledComponentsRegistry>
-          <GlobalProvider>
-            <ContentProvider>{children}</ContentProvider>
-          </GlobalProvider>
+          <ContentProvider>{children}</ContentProvider>
         </StyledComponentsRegistry>
 
         <ToastContainer
