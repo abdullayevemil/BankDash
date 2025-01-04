@@ -1,7 +1,8 @@
-export interface OverviewCardProps {
+export interface Invoice {
   id: number;
   name: string;
+  time: string;
   amount: number;
-  iconBackground: string;
   iconUrl: string;
+  iconBackground: string;
 }

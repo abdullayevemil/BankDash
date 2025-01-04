@@ -4,6 +4,7 @@ interface Props {
   lastTransactions: React.ReactNode;
   creditCard: React.ReactNode;
   creditOverview: React.ReactNode;
+  invoices: React.ReactNode;
 }
 
 export default function DashboardRootLayout({
@@ -12,6 +13,7 @@ export default function DashboardRootLayout({
   lastTransactions,
   creditCard,
   creditOverview,
+  invoices,
 }: Props) {
   return (
     <main className="flex flex-col px-10 pt-6 pb-7 flex-1 bg-backgroundPrimary gap-5">
@@ -21,7 +23,7 @@ export default function DashboardRootLayout({
         {lastTransactions} {creditCard}
       </section>
 
-      <section className="flex flex-row gap-7">{creditOverview} {creditCard}</section>
+      <section className="flex flex-row gap-7">{creditOverview} {invoices}</section>
 
       {children}
     </main>

@@ -1,13 +1,13 @@
 "use client";
 
-import { TransactionOverview } from "@/types/transactionOverview";
+import { Transaction } from "@/types/transaction";
 import Image from "next/image";
 import styled from "styled-components";
 
 export default function TransactionsOverviewTable({
   transactions,
 }: {
-  transactions: TransactionOverview[];
+  transactions: Transaction[];
 }) {
   return (
     <table className="w-full table-auto text-left">
@@ -18,16 +18,16 @@ export default function TransactionsOverviewTable({
             iconUrl,
             name,
             date,
-            category,
+            type,
             cardNumber,
             status,
             amount,
-          }: TransactionOverview) => (
+          }: Transaction) => (
             <tr key={`${name}-${date}`}>
               <td className="flex items-center gap-8 py-[5]">
                 <Container
                   iconbackground={iconBackground}
-                  className="rounded-[20] flex justify-center items-center p-[15]"
+                  className="rounded-3xl flex justify-center items-center p-[15]"
                 >
                   <Image width={25} height={25} src={iconUrl} alt="icon" />
                 </Container>
@@ -39,7 +39,7 @@ export default function TransactionsOverviewTable({
                 </div>
               </td>
               
-              <td className=" py-[5] text-primaryText text-base">{category}</td>
+              <td className=" py-[5] text-primaryText text-base">{type}</td>
               
               <td className=" py-[5] text-primaryText text-base">{cardNumber.slice(0, 4)} ****</td>
               

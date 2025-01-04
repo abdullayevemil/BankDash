@@ -16,16 +16,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-
-const chartData = [
-  { month: "Sat", debit: 186, credit: 80 },
-  { month: "Sun", debit: 305, credit: 200 },
-  { month: "Mon", debit: 237, credit: 120 },
-  { month: "Tue", debit: 73, credit: 190 },
-  { month: "Wed", debit: 209, credit: 130 },
-  { month: "Thu", debit: 214, credit: 140 },
-  { month: "Fri", debit: 214, credit: 140 },
-];
+import { DebitCreditData } from "@/types/debitCreditData";
 
 const chartConfig = {
   debit: {
@@ -38,17 +29,25 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function CreditBarChart() {
+interface Props {
+  chartData: DebitCreditData[];
+}
+
+export function CreditBarChart({ chartData }: Props) {
   const totalDebit = chartData.reduce((sum, item) => sum + item.debit, 0);
+
   const totalCredit = chartData.reduce((sum, item) => sum + item.credit, 0);
 
   return (
     <Card className="w-full p-7">
       <CardHeader>
         <CardDescription className="font-inter">
-          <span className="text-black">${totalDebit}</span> Debited & <span className="text-black">${totalCredit}</span> Credited in this Week
+          <span className="text-black">${totalDebit}</span> Debited &{" "}
+          <span className="text-black">${totalCredit}</span> Credited in this
+          Week
         </CardDescription>
       </CardHeader>
+      
       <CardContent>
         <ChartContainer config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
@@ -61,12 +60,25 @@ export function CreditBarChart() {
               axisLine={false}
               tickFormatter={(value) => value.slice(0, 3)}
             />
+            
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent indicator="dashed" />}
             />
-            <Bar dataKey="debit" fill="var(--color-debit)" radius={10} barSize={30}/>
-            <Bar dataKey="credit" fill="var(--color-credit)" radius={10} barSize={30} />
+            
+            <Bar
+              dataKey="debit"
+              fill="var(--color-debit)"
+              radius={10}
+              barSize={30}
+            />
+            
+            <Bar
+              dataKey="credit"
+              fill="var(--color-credit)"
+              radius={10}
+              barSize={30}
+            />
           </BarChart>
         </ChartContainer>
       </CardContent>

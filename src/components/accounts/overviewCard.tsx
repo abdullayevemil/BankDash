@@ -6,13 +6,14 @@ import Image from "next/image";
 import styled from "styled-components";
 
 export default function OverviewCard({
+  id,
   name,
   amount,
   iconBackground,
   iconUrl,
 }: OverviewCardProps) {
   return (
-    <Card className="flex flex-row justify-evenly gap-5 py-6 px-9 items-center w-full">
+    <Card key={id} className="flex flex-row justify-evenly gap-5 py-6 px-9 items-center w-full">
       <Container iconbackground={iconBackground} className="flex items-center justify-center rounded-full p-5">
         <Image src={iconUrl} alt={`${name} icon`} width={30} height={30} />
       </Container>
