@@ -10,6 +10,8 @@ export async function GET(request: NextRequest) {
 
   const userId = url.searchParams.get("userId");
 
+  const type = url.searchParams.get("type");
+
   let paginatedTransactions = transactions;
 
   if (userId && Number.parseInt(userId)) {
@@ -18,7 +20,24 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  if (offset && limit && Number.parseInt(offset) >= 0 && Number.parseInt(limit) >= 0) {
+  if (type && (type as "all" | "income" | "expense")) {
+    if (type === "income") {
+      paginatedTransactions = paginatedTransactions.filter(
+        (transaction) => transaction.amount > 0
+      );
+    } else if (type === "expense") {
+      paginatedTransactions = paginatedTransactions.filter(
+        (transaction) => transaction.amount < 0
+      );
+    }
+  }
+
+  if (
+    offset &&
+    limit &&
+    Number.parseInt(offset) >= 0 &&
+    Number.parseInt(limit) >= 0
+  ) {
     paginatedTransactions = paginatedTransactions.slice(
       Number.parseInt(offset),
       Number.parseInt(offset) + Number.parseInt(limit)

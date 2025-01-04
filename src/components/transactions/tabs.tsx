@@ -1,10 +1,13 @@
-'use client'
+"use client";
 
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
-const TransactionsTabs = () => {
-  const [activeTab, setActiveTab] = useState("all");
+interface Props {
+  activeTab: string;
+  setActiveTab: Dispatch<SetStateAction<string>>;
+}
 
+const TrasactionTypeTabs = ({ activeTab, setActiveTab } : Props) => {
   const tabs = [
     { id: "all", label: "All Transactions" },
     { id: "income", label: "Income" },
@@ -32,4 +35,4 @@ const TransactionsTabs = () => {
   );
 };
 
-export default TransactionsTabs;
+export default TrasactionTypeTabs;

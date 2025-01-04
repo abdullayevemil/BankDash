@@ -6,10 +6,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { TransactionDetailed } from "@/types/transactionDetailed";
+import { Transaction } from "@/types/transaction";
 
 interface Props {
-    transactions: TransactionDetailed[];
+    transactions: Transaction[];
 }
 
 export function TransactionsTable({ transactions } : Props) {
@@ -28,15 +28,15 @@ export function TransactionsTable({ transactions } : Props) {
       </TableHeader>
       <TableBody>
         {transactions.map((transaction) => (
-          <TableRow key={transaction.transactionId}>
-            <TableCell>{transaction.description}</TableCell>
-            <TableCell>{transaction.transactionId}</TableCell>
+          <TableRow key={transaction.id}>
+            <TableCell>{transaction.name}</TableCell>
+            <TableCell>#{transaction.id}</TableCell>
             <TableCell>{transaction.type}</TableCell>
-            <TableCell>{transaction.card.slice(0, 4)} ****</TableCell>
+            <TableCell>{transaction.cardNumber.slice(0, 4)} ****</TableCell>
             <TableCell>{transaction.date}</TableCell>
             <TableCell  className={`${transaction.amount < 0 ? 'text-negativePrice' : 'text-positivePrice'}`}>{transaction.amount < 0 ? `-$${-transaction.amount}` : `+$${transaction.amount}`}</TableCell>
             <TableCell>
-              <button className="bg-transparent text-primaryText rounded-full py-[7] px-4 text-[15] font-inter text-buttonPrimaryText border border-buttonPrimaryText hover:text-buttonHoverText hover:border-buttonHoverText">Download</button>
+              <button className="bg-transparent text-primaryText rounded-full py-2 px-4 text-base font-inter text-buttonPrimaryText border border-buttonPrimaryText hover:text-buttonHoverText hover:border-buttonHoverText">Download</button>
             </TableCell>
           </TableRow>
         ))}
