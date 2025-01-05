@@ -16,14 +16,14 @@ export default function DashboardRootLayout({
   invoices,
 }: Props) {
   return (
-    <main className="flex flex-col px-10 pt-6 pb-7 flex-1 bg-backgroundPrimary gap-5">
+    <main className="flex flex-col px-10 pt-6 pb-7 flex-1 bg-backgroundPrimary gap-5 w-screen sm:w-full">
       <section>{overviewCards}</section>
 
-      <section className="flex gap-7 flex-col md:flex-row">
+      <section className="flex gap-7 flex-col sm:flex-row">
         {lastTransactions} {creditCard}
       </section>
 
-      <section className="flex gap-7 flex-col md:flex-row">{creditOverview} {invoices}</section>
+      <section className="flex gap-7 flex-col sm:flex-row">{creditOverview} {invoices}</section>
 
       {children}
     </main>

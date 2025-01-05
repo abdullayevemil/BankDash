@@ -94,6 +94,7 @@ export default {
         large: "1.5625rem",
         medium: "1.25rem",
         small: "0.9375rem",
+        extraLarge: "2.5rem",
       },
     },
   },

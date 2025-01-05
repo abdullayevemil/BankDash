@@ -24,7 +24,7 @@ export default function NavBar() {
   return (
     <nav className="h-screen w-0 sm:w-fit border-solid border-borderPrimary border-r relative">
       <div className="flex justify-between items-center px-10 py-5">
-        {!isMenuOpen && (width || 700) > 640 ? (
+        {!isMenuOpen && (width || 700) >= 640 ? (
           <div className="flex flex-row gap-2 py-3">
             <Image src={Logo} alt="Logo" />
 
@@ -40,7 +40,7 @@ export default function NavBar() {
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } sm:translate-x-0 mt-4 sm:mt-0 fixed sm:static bg-white sm:bg-transparent w-full h-full top-0 left-0 z-40 transition-transform duration-300 ease-in-out`}
       >
-        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
+        <li onClick={() => (width || 700) < 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={0}
             url="/dashboard"
@@ -49,7 +49,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
+        <li onClick={() => (width || 700) < 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={1}
             url="/transactions"
@@ -58,7 +58,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
+        <li onClick={() => (width || 700) < 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={2}
             url="/accounts"
@@ -67,7 +67,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
+        <li onClick={() => (width || 700) < 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={3}
             url="/investments"
@@ -76,7 +76,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
+        <li onClick={() => (width || 700) < 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={4}
             url="/credit-cards"
@@ -85,7 +85,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
+        <li onClick={() => (width || 700) < 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={5}
             url="/loans"
@@ -94,7 +94,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
+        <li onClick={() => (width || 700) < 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={6}
             url="/services"
@@ -103,7 +103,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
+        <li onClick={() => (width || 700) < 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={7}
             url="/priveleges"
@@ -112,7 +112,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
+        <li onClick={() => (width || 700) < 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={8}
             url="/setting"

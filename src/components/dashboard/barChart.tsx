@@ -51,9 +51,9 @@ export function DashboardBarChart({ chartData, chartConfig }: Props) {
               content={<ChartTooltipContent indicator="dot" />}
             />
 
-            <Bar barSize={(width || 700) > 640 ? 15 : 7} dataKey="diposit" fill="var(--color-diposit)" radius={100} />
+            <Bar barSize={(width || 700) >= 1024 ? 15 : (width || 700) >= 640 ? 10 : 7} dataKey="diposit" fill="var(--color-diposit)" radius={30} />
 
-            <Bar barSize={(width || 700) > 640 ? 15 : 7} dataKey="withdraw" fill="var(--color-withdraw)" radius={100} />
+            <Bar barSize={(width || 700) >= 1024 ? 15 : (width || 700) >= 640 ? 10 : 7} dataKey="withdraw" fill="var(--color-withdraw)" radius={30} />
           </BarChart>
         </ChartContainer>
       </CardContent>

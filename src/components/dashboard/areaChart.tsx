@@ -24,8 +24,9 @@ export function GradientAreaChart({chartData, chartConfig} : Props) {
             accessibilityLayer
             data={chartData}
             margin={{
-              left: 12,
+              left: -6,
               right: 12,
+              top: 20,
             }}
           >
             <CartesianGrid

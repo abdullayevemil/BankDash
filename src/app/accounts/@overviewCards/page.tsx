@@ -4,7 +4,6 @@ import OverviewCard from "@/components/accounts/overviewCard";
 import { OverviewCardProps } from "@/types/overviewCardData";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 
 export default function OverviewCards() {
   const [cards, setCards] = useState<OverviewCardProps[]>([]);
@@ -20,22 +19,34 @@ export default function OverviewCards() {
   }, [setCards]);
 
   return (
-    <ul className="flex flex-row gap-7 w-full">
-      {cards.map((card, index) => (
-        <CardItem width={100 / cards.length} key={index}>
-          <OverviewCard
-            id={card.id}
-            name={card.name}
-            amount={card.amount}
-            iconBackground={card.iconBackground}
-            iconUrl={card.iconUrl}
-          ></OverviewCard>
-        </CardItem>
-      ))}
+    <ul className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-7 w-full">
+      <ul className="flex flex-row gap-7 w-full">
+        {cards.slice(0, 2).map((card, index) => (
+          <li className="w-1/2" key={index}>
+            <OverviewCard
+              id={card.id}
+              name={card.name}
+              amount={card.amount}
+              iconBackground={card.iconBackground}
+              iconUrl={card.iconUrl}
+            ></OverviewCard>
+          </li>
+        ))}
+      </ul>
+
+      <ul className="flex flex-row gap-7 w-full">
+        {cards.slice(2, 4).map((card, index) => (
+          <li className="w-1/2" key={index}>
+            <OverviewCard
+              id={card.id}
+              name={card.name}
+              amount={card.amount}
+              iconBackground={card.iconBackground}
+              iconUrl={card.iconUrl}
+            ></OverviewCard>
+          </li>
+        ))}
+      </ul>
     </ul>
   );
 }
-
-const CardItem = styled.li<{ width: number }>`
-  width: ${(props) => props.width}%;
-`;

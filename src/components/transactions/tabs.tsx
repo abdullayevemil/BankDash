@@ -21,7 +21,7 @@ const TrasactionTypeTabs = ({ activeTab, setActiveTab } : Props) => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-4 py-2 font-medium focus:outline-none transition-all duration-300 ${
+            className={`px-4 py-2 text-small lg:text-base font-medium focus:outline-none transition-all duration-300 ${
               activeTab === tab.id
                 ? "text-blue-600 border-b-2 border-blue-600"
                 : "text-gray-400 border-b-2 border-transparent hover:text-gray-600"

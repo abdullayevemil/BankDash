@@ -17,6 +17,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { DebitCreditData } from "@/types/debitCreditData";
+import useWindowWidth from "@/hooks/width";
 
 const chartConfig = {
   debit: {
@@ -38,16 +39,20 @@ export function CreditBarChart({ chartData }: Props) {
 
   const totalCredit = chartData.reduce((sum, item) => sum + item.credit, 0);
 
+  const width = useWindowWidth();
+
   return (
-    <Card className="w-full p-7">
-      <CardHeader>
-        <CardDescription className="font-inter">
-          <span className="text-black">${totalDebit}</span> Debited &{" "}
-          <span className="text-black">${totalCredit}</span> Credited in this
-          Week
-        </CardDescription>
-      </CardHeader>
-      
+    <Card className="w-full p-5 lg:p-7">
+      {(width || 700) >= 640 ? (
+        <CardHeader>
+          <CardDescription className="font-inter text-xs lg:text-base">
+            <span className="text-black">${totalDebit}</span> Debited &{" "}
+            <span className="text-black">${totalCredit}</span> Credited in this
+            Week
+          </CardDescription>
+        </CardHeader>
+      ) : null}
+
       <CardContent>
         <ChartContainer config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
@@ -60,24 +65,24 @@ export function CreditBarChart({ chartData }: Props) {
               axisLine={false}
               tickFormatter={(value) => value.slice(0, 3)}
             />
-            
+
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent indicator="dashed" />}
             />
-            
+
             <Bar
               dataKey="debit"
               fill="var(--color-debit)"
-              radius={10}
-              barSize={30}
+              radius={(width || 700) >= 1024 ? 10 : (width || 700) >= 640 ? 7 : 4}
+              barSize={(width || 700) >= 1024 ? 30 : (width || 700) >= 640 ? 20 : 10}
             />
-            
+
             <Bar
               dataKey="credit"
               fill="var(--color-credit)"
-              radius={10}
-              barSize={30}
+              radius={(width || 700) >= 1024 ? 10 : (width || 700) >= 640 ? 7 : 4}
+              barSize={(width || 700) >= 1024 ? 30 : (width || 700) >= 640 ? 20 : 10}
             />
           </BarChart>
         </ChartContainer>

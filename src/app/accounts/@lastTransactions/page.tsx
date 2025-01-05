@@ -35,10 +35,10 @@ export default function LastTransactions() {
   }, [setTransactions]);
 
   return (
-    <div className="w-2/3 flex flex-col gap-3 md:gap-4 lg:gap-5">
+    <div className="w-full sm:w-2/3 flex flex-col gap-3 md:gap-4 lg:gap-5">
       <div className="font-inter text-base md:text-lg lg:text-large font-semibold flex justify-left items-center text-primary2">Last Transaction</div>
 
-      <Card className="py-[22] px-6">
+      <Card className="p-5 sm:px-5 sm:py-4 lg:py-5 lg:px-6 rounded-small sm:rounded-medium lg:rounded-large ">
         <TransactionsOverviewTable
           transactions={transactions}
         ></TransactionsOverviewTable>

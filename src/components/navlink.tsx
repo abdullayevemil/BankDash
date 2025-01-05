@@ -42,7 +42,7 @@ export default function NavLink({
       <div
         className={`${
           isActive ? "bg-navigationActiveForeground" : "bg-transparent"
-        } w-1.5 h-[60] rounded-e-lg`}
+        } w-1.5 h-16 rounded-e-lg`}
       ></div>
 
       {React.createElement(icons[iconIndex], {

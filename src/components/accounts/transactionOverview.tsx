@@ -1,5 +1,6 @@
 "use client";
 
+import useWindowWidth from "@/hooks/width";
 import { Transaction } from "@/types/transaction";
 import Image from "next/image";
 import styled from "styled-components";
@@ -9,6 +10,8 @@ export default function TransactionsOverviewTable({
 }: {
   transactions: Transaction[];
 }) {
+  const width = useWindowWidth();
+
   return (
     <table className="w-full table-auto text-left">
       <tbody>
@@ -24,29 +27,31 @@ export default function TransactionsOverviewTable({
             amount,
           }: Transaction) => (
             <tr key={`${name}-${date}`}>
-              <td className="flex items-center gap-8 py-[5]">
+              <td className="flex items-center gap-3 sm:gap-4 lg:gap-6 py-1">
                 <Container
                   iconbackground={iconBackground}
-                  className="rounded-3xl flex justify-center items-center p-[15]"
+                  className="rounded-xl sm:rounded-medium lg:rounded-large flex justify-center items-center p-3 lg:p-4"
                 >
-                  <Image width={25} height={25} src={iconUrl} alt="icon" />
+                  <Image width={25} height={25} src={iconUrl} alt="icon" className="w-5 h-5 lg:w-7 lg:h-7"/>
                 </Container>
                 
-                <div>
-                  <div className="font-inter text-base font-medium">{name}</div>
+                <div className="flex flex-col gap-1 lg:gap-[7px]">
+                  <div className="font-inter text-sm sm:text-xs lg:text-base font-medium">{name}</div>
                   
-                  <div className="text-primaryText text-[15]">{date}</div>
+                  <div className="text-primaryText text-xs lg:text-base">{date}</div>
                 </div>
               </td>
               
-              <td className=" py-[5] text-primaryText text-base">{type}</td>
+              {
+                (width || 700) >= 640 ? <><td className=" py-1 text-primaryText text-xs lg:text-base">{type}</td>
               
-              <td className=" py-[5] text-primaryText text-base">{cardNumber.slice(0, 4)} ****</td>
-              
-              <td className=" py-[5] text-primaryText text-base">{status}</td>
+                <td className=" py-1 text-primaryText text-xs lg:text-base">{cardNumber.slice(0, 4)} ****</td>
+                
+                <td className=" py-1 text-primaryText text-xs lg:text-base">{status}</td></> : null
+              }
               
               <td
-                className={` py-[5] text-right ${
+                className={`text-xs lg:text-base py-1 text-right ${
                   amount < 0 ? "text-negativePrice" : "text-positivePrice"
                 }`}
               >

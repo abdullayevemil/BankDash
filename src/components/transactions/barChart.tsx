@@ -11,12 +11,15 @@ import {
 } from "recharts";
 import { Card, CardContent } from "@/components/ui/card";
 import { Expense } from "@/types/expense";
+import useWindowWidth from "@/hooks/width";
 
 interface Props {
   chartData: Expense[];
 }
 
 export function ExpenseBarChart({ chartData }: Props) {
+  const width = useWindowWidth();
+
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleClick = (data: Expense[], index: number) => {
@@ -24,9 +27,9 @@ export function ExpenseBarChart({ chartData }: Props) {
   };
 
   return (
-    <Card className="p-4 w-full h-full">
+    <Card className="p-4 w-full h-full h-52 sm:h-full">
       <CardContent className="w-full h-full">
-        <ResponsiveContainer className="w-full h-full">
+        <ResponsiveContainer>
           <BarChart
             data={chartData}
             className="w-full"
@@ -55,10 +58,10 @@ export function ExpenseBarChart({ chartData }: Props) {
                 content={({ x, y, value, index }) =>
                   index === activeIndex ? (
                     <text
-                      x={((x as number) || 0) + 22}
+                      x={((x as number) || 0) + ((width || 700) < 640 ? 16 : 22)}
                       y={((y as number) || 0) - 7}
                       textAnchor="middle"
-                      className="font-bold text-sm fill-current font-inter font-medium bg-red"
+                      className="font-bold text-xs lg:text-sm fill-current font-inter font-medium bg-red"
                     >
                       ${value}
                     </text>

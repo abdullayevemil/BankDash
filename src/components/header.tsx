@@ -38,9 +38,9 @@ export default function Header() {
           Overview
         </div>
 
-        {(width || 700) > 640 ? (
+        {(width || 700) >= 640 ? (
           <div className="flex flex-row gap-7 items-center">
-            <div className="items-center flex flex-row bg-backgroundPrimary py-4 px-6 rounded-[40] gap-4">
+            <div className="items-center flex flex-row bg-backgroundPrimary py-4 px-6 rounded-extraLarge gap-4">
               <SearchIcon color="#718EBF" width={25} height={25} />
               <input
                 className="font-inter items-center bg-backgroundPrimary placeholder-placeholder text-primaryText"
@@ -78,8 +78,8 @@ export default function Header() {
           </div>
         )}
       </div>
-      {(width || 700) <= 640 ? (
-        <div className="items-center flex flex-row bg-backgroundPrimary py-3 px-5 rounded-[40] gap-4">
+      {(width || 700) < 640 ? (
+        <div className="items-center flex flex-row bg-backgroundPrimary py-3 px-5 rounded-extraLarge gap-4">
           <SearchIcon color="#718EBF" width={16} height={16} />
           <input
             className="font-inter items-center bg-backgroundPrimary placeholder-placeholder text-small"

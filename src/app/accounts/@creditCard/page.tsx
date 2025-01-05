@@ -43,7 +43,7 @@ export default function CreditCards() {
   }, [setUser]);
 
   return (
-    <div className="flex flex-col w-1/3 gap-5">
+    <div className="flex flex-col w-full sm:w-1/3 gap-3 md:gap-4 lg:gap-5">
       <div className="flex flex-row w-full justify-between">
         <div className="font-inter text-base md:text-lg lg:text-large font-semibold flex justify-left items-center text-primary2">
           My Card

@@ -51,7 +51,7 @@ export default function Transactions() {
         setActiveTab={setActiveTab}
       ></TrasactionTypeTabs>
 
-      <Card className="p-[30] pt-[22]">
+      <Card className="p-7 pt-5">
         <TransactionsTable transactions={transactions} />
       </Card>
 
