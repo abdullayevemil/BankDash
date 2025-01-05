@@ -44,7 +44,7 @@ const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         const { email, password } = credentials || {};
         const response = await axios.get(
-          `http://localhost:3000/api/users?email=${email}`
+          `${process.env.NEXTAUTH_URL}/api/users?email=${email}`
         );
 
         const user = response.data[0];
