@@ -4,6 +4,7 @@ import Content from "./content";
 import Header from "./header";
 import NavBar from "./navbar";
 import { SessionProvider } from "next-auth/react";
+import { MenuProvider } from "@/context/MenuContext";
 
 export default function ContentProvider({
   children,
@@ -12,17 +13,19 @@ export default function ContentProvider({
 }>) {
   return (
     <SessionProvider>
-      <Content>
-        <div className="flex flex-row">
-          <NavBar></NavBar>
+      <MenuProvider>
+        <Content>
+          <div className="flex flex-row">
+            <NavBar></NavBar>
 
-          <div className="flex-1">
-            <Header />
+            <div className="flex-1">
+              <Header />
 
-            {children}
+              {children}
+            </div>
           </div>
-        </div>
-      </Content>
+        </Content>
+      </MenuProvider>
     </SessionProvider>
   );
 }

@@ -5,14 +5,17 @@ import NavLink from "./navlink";
 import Logo from "../assets/navigation/logo.png";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+import { useMenu } from "@/context/MenuContext";
+import useWindowWidth from "@/hooks/width";
 
 export default function NavBar() {
   const { status } = useSession();
-  
-  const pathname = usePathname();
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const width = useWindowWidth();
+
+  const { isMenuOpen, toggleMenu } = useMenu();
+
+  const pathname = usePathname();
 
   if (status != "authenticated") {
     return null;
@@ -21,24 +24,15 @@ export default function NavBar() {
   return (
     <nav className="h-screen w-0 sm:w-fit border-solid border-borderPrimary border-r relative">
       <div className="flex justify-between items-center px-10 py-5">
-        <div className="flex flex-row gap-2 py-3">
-          <Image src={Logo} alt="Logo" />
+        {!isMenuOpen && (width || 700) > 640 ? (
+          <div className="flex flex-row gap-2 py-3">
+            <Image src={Logo} alt="Logo" />
 
-          <span className="text-primary2 text-2xl font-black font-montserrat">
-            BankDash.
-          </span>
-        </div>
-
-        <button
-          className="sm:hidden flex flex-col justify-center items-center space-y-1 z-50"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          <div className="w-6 h-1 bg-navigationActiveForeground"></div>
-          
-          <div className="w-6 h-1 bg-navigationActiveForeground"></div>
-          
-          <div className="w-6 h-1 bg-navigationActiveForeground"></div>
-        </button>
+            <span className="text-primary2 text-2xl font-black font-montserrat">
+              BankDash.
+            </span>
+          </div>
+        ) : null}
       </div>
 
       <ul
@@ -46,7 +40,7 @@ export default function NavBar() {
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } sm:translate-x-0 mt-4 sm:mt-0 fixed sm:static bg-white sm:bg-transparent w-full h-full top-0 left-0 z-40 transition-transform duration-300 ease-in-out`}
       >
-        <li>
+        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={0}
             url="/dashboard"
@@ -55,7 +49,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li>
+        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={1}
             url="/transactions"
@@ -64,7 +58,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li>
+        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={2}
             url="/accounts"
@@ -73,7 +67,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li>
+        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={3}
             url="/investments"
@@ -82,7 +76,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li>
+        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={4}
             url="/credit-cards"
@@ -91,7 +85,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li>
+        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={5}
             url="/loans"
@@ -100,7 +94,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li>
+        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={6}
             url="/services"
@@ -109,7 +103,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li>
+        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={7}
             url="/priveleges"
@@ -118,7 +112,7 @@ export default function NavBar() {
           />
         </li>
 
-        <li>
+        <li onClick={() => (width || 700) <= 640 ? toggleMenu() : null}>
           <NavLink
             iconIndex={8}
             url="/setting"
