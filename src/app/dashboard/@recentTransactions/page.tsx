@@ -17,8 +17,12 @@ export default function Transactions() {
 
         const user = session?.user;
 
+        const userResponse = await axios.get(`/api/users?email=${user?.email}`);
+
+        const currentUser = userResponse.data;
+
         const response = await axios.get(
-          `/api/transactions?userId=${user?.id}&offset=0&limit=3`
+          `/api/transactions?userId=${currentUser?.id}&offset=0&limit=3`
         );
 
         if (response.status != 200) {

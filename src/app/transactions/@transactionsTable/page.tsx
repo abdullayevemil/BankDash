@@ -26,9 +26,13 @@ export default function Transactions() {
 
       const user = session?.user;
 
+      const userResponse = await axios.get(`/api/users?email=${user?.email}`);
+
+      const currentUser = userResponse.data;
+
       try {
         const response = await axios.get(
-          `/api/transactions?userId=${user?.id}&offset=${
+          `/api/transactions?userId=${currentUser?.id}&offset=${
             (currentPage - 1) * itemsPerPage
           }&limit=${itemsPerPage}&type=${activeTab}`
         );
