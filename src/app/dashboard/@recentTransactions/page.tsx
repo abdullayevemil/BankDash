@@ -35,20 +35,26 @@ export default function Transactions() {
   }, [setTransactions]);
 
   return (
-    <Card className="w-1/3 p-6 flex items-center">
-      <ul className="flex flex-col gap-3 w-full">
-        {transactions.map((transaction, index) => (
-          <li className="w-full" key={index}>
-            <TransactionInformation
-              iconbackground={transaction.iconBackground}
-              iconUrl={transaction.iconUrl}
-              name={transaction.name}
-              date={transaction.date}
-              amount={transaction.amount}
-            />
-          </li>
-        ))}
-      </ul>
-    </Card>
+    <div className="flex flex-col gap-3 md:gap-4 lg:gap-5 w-full sm:w-1/3">
+      <div className="font-inter text-base md:text-lg lg:text-large font-semibold flex justify-left items-center text-primary2">
+        Recent Transactions
+      </div>
+
+      <Card className="w-full p-5 md:p-4 lg:p-6 flex items-center">
+        <ul className="flex flex-col gap-3 w-full">
+          {transactions.map((transaction, index) => (
+            <li className="w-full" key={index}>
+              <TransactionInformation
+                iconbackground={transaction.iconBackground}
+                iconUrl={transaction.iconUrl}
+                name={transaction.name}
+                date={transaction.date}
+                amount={transaction.amount}
+              />
+            </li>
+          ))}
+        </ul>
+      </Card>
+    </div>
   );
 }

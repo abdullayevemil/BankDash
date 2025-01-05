@@ -14,34 +14,14 @@ export default function TransactionsRootLayout({
   transactionsTable,
 }: Props) {
   return (
-    <main className="flex flex-col px-10 pt-6 pb-7 flex-1 bg-backgroundPrimary gap-5">
-      <section className="flex flex-row gap-7">
-        <div className="flex flex-row w-2/3 justify-between">
-          <div className="font-inter text-large font-semibold flex justify-left items-center text-primary2">
-            My Cards
-          </div>
-
-          <div className="font-inter text-sectionSubtitle font-semibold flex justify-right items-center px-2 text-primary2">
-            + Add Card
-          </div>
-        </div>
-
-        <div className="flex flex-row w-1/3 justify-between">
-          <div className="font-inter text-large font-semibold flex justify-left items-center text-primary2">
-            My Expense
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div className="flex flex-row gap-7">
+    <main className="flex flex-col px-10 pt-6 pb-7 flex-1 bg-backgroundPrimary gap-3 md:gap-4 lg:gap-5 w-screen sm:w-full">
+      <section className="flex flex-col gap-7 sm:flex-row">
           {creditCards}
 
           {barChart}
-        </div>
       </section>
 
-      <section className="font-inter text-large font-semibold flex justify-left items-center text-primary2">
+      <section className="font-inter text-base md:text-lg lg:text-large font-semibold flex justify-left items-center text-primary2">
         Recent Transactions
       </section>
 

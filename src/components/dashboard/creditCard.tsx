@@ -24,44 +24,44 @@ export default function CreditCard({
   return (
     <Card
       theme={theme}
-      className={`shadow font-lato flex flex-col rounded-3xl ${theme === 'whiteCard' ? 'border border-border text-black ' : ' text-white '}` + className}
+      className={`shadow font-lato flex flex-col rounded-small md:rounded-medium lg:rounded-large ${theme === 'whiteCard' ? 'border border-border text-black ' : ' text-white '}` + className}
     >
-      <div className="p-6 flex flex-col gap-[34]">
+      <div className="py-4 px-5 lg:p-6 flex flex-col gap-6 md:gap-8">
         <div className="flex flex-row justify-between">
           <div>
-            <div className={`text-xs ` + `${theme === 'whiteCard' ? 'text-whiteCardSecondaryForeground' : 'text-cardSecondaryForeground'}`}>Balance</div>
+            <div className={`text-cardBalanceTab lg:text-xs ` + `${theme === 'whiteCard' ? 'text-whiteCardSecondaryForeground' : 'text-cardSecondaryForeground'}`}>Balance</div>
 
-            <div className="text-xl font-semibold">${balance}</div>
+            <div className="text-base lg:text-xl font-semibold">${balance}</div>
           </div>
 
-          {theme === 'whiteCard' ? <DarkChipCardIcon  width={35} height={35} /> : <ChipCardIcon width={35} height={35} />}
+          {theme === 'whiteCard' ? <DarkChipCardIcon className="w-7 h-7 lg:w-9 lg:h-9" /> : <ChipCardIcon className="w-7 h-7 lg:w-9 lg:h-9" />}
         </div>
 
-        <div className="flex flex-row justify-left gap-[67]">
+        <div className="flex flex-row justify-left gap-12 md:gap-10 lg:gap-16">
           <div>
-            <div className={`uppercase text-xs ` + `${theme === 'whiteCard' ? 'text-whiteCardSecondaryForeground' : 'text-cardSecondaryForeground'}`}>Card Holder</div>
+            <div className={`uppercase text-cardHolderTab lg:text-xs ` + `${theme === 'whiteCard' ? 'text-whiteCardSecondaryForeground' : 'text-cardSecondaryForeground'}`}>Card Holder</div>
 
-            <div className="text-medium font-semibold">{cardHolder}</div>
+            <div className="text-small lg:text-medium font-semibold">{cardHolder}</div>
           </div>
 
           <div>
-            <div className={`uppercase text-xs ` + `${theme === 'whiteCard' ? 'text-whiteCardSecondaryForeground' : 'text-cardSecondaryForeground'}`}>Valid Thru</div>
+            <div className={`uppercase text-cardHolderTab lg:text-xs ` + `${theme === 'whiteCard' ? 'text-whiteCardSecondaryForeground' : 'text-cardSecondaryForeground'}`}>Valid Thru</div>
 
-            <div className="text-medium font-semibold">{validThru}</div>
+            <div className="text-small lg:text-medium font-semibold">{validThru}</div>
           </div>
         </div>
       </div>
 
       <CardFooter
         theme={theme}
-        className={`flex flex-row justify-between px-6 py-[22] rounded-b-[25] ${theme === 'whiteCard' ? 'border-t border-border' : ''}`}
+        className={`flex flex-row justify-between px-5 py-4 lg:px-6 lg:py-5 rounded-b-small md:rounded-b-medium lg:rounded-b-large ${theme === 'whiteCard' ? 'border-t border-border' : ''}`}
       >
-        <div className="text-large font-semibold">{cardNumber}</div>
+        <div className="text-medium lg:text-large font-semibold">{cardNumber}</div>
 
         <div className="flex flex-row relative">
-          <div className={`w-[30] h-[30] ${theme === 'whiteCard' ? 'bg-darkSemiTransparent' : 'bg-semiTransparent'} rounded-full absolute right-[15]`}></div>
+          <div className={`w-5 h-5 lg:w-8 lg:h-8 ${theme === 'whiteCard' ? 'bg-darkSemiTransparent' : 'bg-semiTransparent'} rounded-full absolute right-2.5 lg:right-4`}></div>
 
-          <div className={`w-[30] h-[30] ${theme === 'whiteCard' ? 'bg-darkSemiTransparent' : 'bg-semiTransparent'} rounded-full absolute right-0`}></div>
+          <div className={`w-5 h-5 lg:w-8 lg:h-8 ${theme === 'whiteCard' ? 'bg-darkSemiTransparent' : 'bg-semiTransparent'} rounded-full absolute right-0`}></div>
         </div>
       </CardFooter>
     </Card>

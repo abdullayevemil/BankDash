@@ -24,7 +24,7 @@ export function ExpenseBarChart({ chartData }: Props) {
   };
 
   return (
-    <Card className="p-4 w-1/3">
+    <Card className="p-4 w-full h-full">
       <CardContent className="w-full h-full">
         <ResponsiveContainer className="w-full h-full">
           <BarChart

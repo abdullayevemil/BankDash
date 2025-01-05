@@ -17,7 +17,7 @@ interface Props {
 
 export function GradientAreaChart({chartData, chartConfig} : Props) {
   return (
-    <Card className="flex-1 p-6 pl-0 w-full">
+    <Card className="flex-1 p-4 pl-0 lg:p-6 lg:pl-0 w-full">
       <CardContent>
         <ChartContainer config={chartConfig}>
           <AreaChart

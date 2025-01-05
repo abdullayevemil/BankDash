@@ -11,6 +11,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { BarChartData } from "@/types/barChartData";
+import useWindowWidth from "@/hooks/width";
 
 interface Props {
   chartData: BarChartData[];
@@ -18,8 +19,10 @@ interface Props {
 }
 
 export function DashboardBarChart({ chartData, chartConfig }: Props) {
+  const width = useWindowWidth();
+  
   return (
-    <Card className="flex-1 p-6">
+    <Card className="flex-1 p-4 pl-0 lg:p-6 lg:pl-2">
       <CardContent>
         <ChartContainer config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
@@ -48,9 +51,9 @@ export function DashboardBarChart({ chartData, chartConfig }: Props) {
               content={<ChartTooltipContent indicator="dot" />}
             />
 
-            <Bar barSize={15} dataKey="diposit" fill="var(--color-diposit)" radius={100} />
+            <Bar barSize={(width || 700) > 640 ? 15 : 7} dataKey="diposit" fill="var(--color-diposit)" radius={100} />
 
-            <Bar barSize={15} dataKey="withdraw" fill="var(--color-withdraw)" radius={100} />
+            <Bar barSize={(width || 700) > 640 ? 15 : 7} dataKey="withdraw" fill="var(--color-withdraw)" radius={100} />
           </BarChart>
         </ChartContainer>
       </CardContent>

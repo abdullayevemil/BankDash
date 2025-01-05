@@ -19,7 +19,7 @@ export function SmoothCarousel({ contacts }: Props) {
     <Carousel className="w-full max-w-sm">
       <CarouselContent className="-ml-1">
         {contacts.map((contact, index) => (
-          <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
+          <CarouselItem key={index} className="pl-1 basis-1/3 lg:basis-1/3">
             <div className="p-1">
               <Card className="shadow-none border-0">
                 <CardContent className="flex aspect-square items-center justify-center">

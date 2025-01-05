@@ -31,9 +31,15 @@ export default function BalanceBarChart() {
   }, [setChartData]);
 
   return (
-    <DashboardBarChart
-      chartData={chartData}
-      chartConfig={chartConfig}
-    ></DashboardBarChart>
+    <div className="flex flex-col gap-3 md:gap-4 lg:gap-5 w-full sm:w-2/3">
+      <div className="font-inter text-base md:text-lg lg:text-large font-semibold flex justify-left items-center text-primary2">
+        Weekly Activity
+      </div>
+
+      <DashboardBarChart
+        chartData={chartData}
+        chartConfig={chartConfig}
+      ></DashboardBarChart>
+    </div>
   );
 }

@@ -22,12 +22,12 @@ export default function CarouselSpacing() {
   }, [setContacts]);
 
   return (
-    <div className="flex flex-col gap-5 w-full">
-      <div className="font-inter text-large font-semibold flex justify-left items-center text-primary2">
+    <div className="flex flex-col gap-3 md:gap-4 lg:gap-5 w-full">
+      <div className="font-inter text-base md:text-lg lg:text-large font-semibold flex justify-left items-center text-primary2">
         Quick Transfer
       </div>
 
-      <Card className="flex flex-col pb-6 py-9 items-center gap-7 justify-center">
+      <Card className="flex flex-col pb-6 py-9 items-center gap-7 justify-center w-full">
         <SmoothCarousel contacts={contacts} />
 
         <TransactionBar />

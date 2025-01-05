@@ -5,20 +5,22 @@ import NavLink from "./navlink";
 import Logo from "../assets/navigation/logo.png";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
+import { useState } from "react";
 
 export default function NavBar() {
   const { status } = useSession();
-
+  
   const pathname = usePathname();
 
-  if(status != 'authenticated')
-  {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  if (status != "authenticated") {
     return null;
   }
 
   return (
-    <nav className="h-screen border-solid border-borderPrimary border-r">
-      <div className="flex flex-row px-10 py-5">
+    <nav className="h-screen w-0 sm:w-fit border-solid border-borderPrimary border-r relative">
+      <div className="flex justify-between items-center px-10 py-5">
         <div className="flex flex-row gap-2 py-3">
           <Image src={Logo} alt="Logo" />
 
@@ -26,16 +28,31 @@ export default function NavBar() {
             BankDash.
           </span>
         </div>
+
+        <button
+          className="sm:hidden flex flex-col justify-center items-center space-y-1 z-50"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <div className="w-6 h-1 bg-navigationActiveForeground"></div>
+          
+          <div className="w-6 h-1 bg-navigationActiveForeground"></div>
+          
+          <div className="w-6 h-1 bg-navigationActiveForeground"></div>
+        </button>
       </div>
 
-      <ul>
+      <ul
+        className={`${
+          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+        } sm:translate-x-0 mt-4 sm:mt-0 fixed sm:static bg-white sm:bg-transparent w-full h-full top-0 left-0 z-40 transition-transform duration-300 ease-in-out`}
+      >
         <li>
           <NavLink
             iconIndex={0}
             url="/dashboard"
             displayName="Dashboard"
             isActive={pathname === "/dashboard"}
-          ></NavLink>
+          />
         </li>
 
         <li>
@@ -44,7 +61,7 @@ export default function NavBar() {
             url="/transactions"
             displayName="Transactions"
             isActive={pathname === "/transactions"}
-          ></NavLink>
+          />
         </li>
 
         <li>
@@ -53,7 +70,7 @@ export default function NavBar() {
             url="/accounts"
             displayName="Accounts"
             isActive={pathname === "/accounts"}
-          ></NavLink>
+          />
         </li>
 
         <li>
@@ -62,7 +79,7 @@ export default function NavBar() {
             url="/investments"
             displayName="Investments"
             isActive={pathname === "/investments"}
-          ></NavLink>
+          />
         </li>
 
         <li>
@@ -71,7 +88,7 @@ export default function NavBar() {
             url="/credit-cards"
             displayName="Credit Cards"
             isActive={pathname === "/credit-cards"}
-          ></NavLink>
+          />
         </li>
 
         <li>
@@ -80,7 +97,7 @@ export default function NavBar() {
             url="/loans"
             displayName="Loans"
             isActive={pathname === "/loans"}
-          ></NavLink>
+          />
         </li>
 
         <li>
@@ -89,7 +106,7 @@ export default function NavBar() {
             url="/services"
             displayName="Services"
             isActive={pathname === "/services"}
-          ></NavLink>
+          />
         </li>
 
         <li>
@@ -98,7 +115,7 @@ export default function NavBar() {
             url="/priveleges"
             displayName="My Priveleges"
             isActive={pathname === "/priveleges"}
-          ></NavLink>
+          />
         </li>
 
         <li>
@@ -107,7 +124,7 @@ export default function NavBar() {
             url="/setting"
             displayName="Setting"
             isActive={pathname === "/setting"}
-          ></NavLink>
+          />
         </li>
       </ul>
     </nav>

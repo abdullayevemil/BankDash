@@ -22,16 +22,16 @@ export default function TransactionBar() {
       };
 
     return (
-        <form onSubmit={submitTransaction} className="flex flex-row justify-between items-center gap-7">
-            <label className="text-primaryText font-inter text-base">Write amount</label>
+        <form onSubmit={submitTransaction} className="flex flex-row justify-between items-center gap-5 lg:gap-7 w-full py-5 px-4 lg:px-6 lg:py-9">
+            <label className="text-primaryText font-inter text-xs lg:text-base">Write amount</label>
 
             <div  className="flex flex-row rounded-full bg-transactionBar">
-                <input name="amount" placeholder="525.50" className="bg-transactionBar rounded-l-full px-7 py-4 placeholder-placeholder text-primaryText"/>
+                <input name="amount" placeholder="525.50" className="w-20 md:w-28 lg:w-40 bg-transactionBar rounded-l-full px-4 py-3 lg:px-7 lg:py-4 placeholder-placeholder text-primaryText text-xs lg:text-base"/>
 
-                <button type="submit" className="flex flex-row rounded-full px-6 py-3 gap-3 bg-sendButton items-center">
-                    <span className="text-white font-inter font-medium text-base">Send</span>
+                <button type="submit" className="flex flex-row rounded-full p-3 lg:px-6 lg:py-3 gap-2 lg:gap-3 bg-sendButton items-center">
+                    <span className="text-white font-inter font-medium text-xs lg:text-base">Send</span>
 
-                    <SendIcon width={26} height={22} color="white" />
+                    <SendIcon className="w-4 h-3 lg:w-6 lg:h-5" color="white" />
                 </button>
             </div>
         </form>

@@ -18,5 +18,13 @@ export default function BalanceBarChart() {
     fetchExpenses();
   }, [setExpenses]);
 
-  return <ExpenseBarChart chartData={expenses}></ExpenseBarChart>;
+  return (
+    <div className="flex flex-col gap-3 md:gap-4 lg:gap-5 w-full sm:w-1/3">
+      <div className="font-inter text-base md:text-lg lg:text-large font-semibold flex justify-left items-center text-primary2">
+        My Expense
+      </div>
+
+      <ExpenseBarChart chartData={expenses}></ExpenseBarChart>
+    </div>
+  );
 }

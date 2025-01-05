@@ -41,5 +41,13 @@ export default function BalancePieChart() {
     fetchStatistics();
   }, [setStatistics]);
 
-  return <DashboardPieChart chartConfig={chartConfig} chartData={statistics} />;
+  return (
+    <div className="flex flex-col gap-3 md:gap-4 lg:gap-5 w-full sm:w-1/3">
+      <div className="font-inter text-base md:text-lg lg:text-large font-semibold flex justify-left items-center text-primary2">
+        Expense Statistics
+      </div>
+
+      <DashboardPieChart chartConfig={chartConfig} chartData={statistics} />
+    </div>
+  );
 }
