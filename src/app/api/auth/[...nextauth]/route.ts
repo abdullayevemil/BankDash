@@ -44,7 +44,7 @@ const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         const { email, password } = credentials || {};
         const response = await axios.get(
-          `${process.env.NEXTAUTH_URL}/api/users?email=${email}`
+          `https://bank-dash-lemon.vercel.app/api/users?email=${email}`
         );
 
         const user = response.data[0];
